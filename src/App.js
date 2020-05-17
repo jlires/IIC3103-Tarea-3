@@ -11,6 +11,7 @@ import { StockChart }  from './components/StockChart';
 import { StockInfo }  from './components/StockInfo';
 import { ExchangeInfo }  from './components/ExchangeInfo';
 import Switch from 'react-switch';
+import ClipLoader from "react-spinners/ClipLoader";
 
 // Utils
 import { convertArrayToObject } from './utils.js';
@@ -73,7 +74,7 @@ class App extends React.Component {
 
       this.socket.on('UPDATE', (data) => {
         const stock_s = "stock_" + data.ticker;
-        this.setState({ [stock_s]: [...this.state[stock_s],{time: data.time, value: data.value}] });
+        this.setState({ [stock_s]: [...this.state[stock_s],{time: data.time/1000, value: data.value}] });
       });
       this.socket.on('BUY', (data) => {
         const stock_s = "stock_buy_" + data.ticker;
@@ -150,6 +151,11 @@ class App extends React.Component {
           </Row>
           <Row style={{marginBottom: "0px"}}>
             <Col xs="12" md="3">
+              <ClipLoader
+                size={80}
+                color={"rgba(38,198,218, 0.56)"}
+                loading={(this.state.exchanges.length === 0)}
+              />
               <ExchangeList exchanges={this.state.exchanges}
                             clickAction={this.onStockClick.bind(this)} />
             </Col>
