@@ -20,9 +20,21 @@ export class StockChart extends React.Component {
                               { width: 600,
                                 height: 350,
                                 fixLeftEdge: true,
+                                crosshair: {
+                                  labelVisible: false,
+                                  visible: false,
+                                },
                                 localization: {
                                   locale: 'es-CL',
                                   dateFormat: 'dd/mm/yyyy',
+                                  timeFormatter: function(timestamp) {
+                                    const a = new Date(timestamp*1000);
+                                    const hour = a.getHours();
+                                    const min = a.getMinutes();
+                                    const sec = a.getSeconds();
+                                    const time = String("00" + hour).slice(-2) + ':' + String("00" + min).slice(-2) + ':' + String("00" + sec).slice(-2) ;
+                                    return time;
+                                  },
                                 },
                               	priceScale: {
                               		scaleMargins: {
@@ -45,6 +57,7 @@ export class StockChart extends React.Component {
                               	},
                                 timeScale: {
                                   timeVisible: true,
+                                  visible: false,
                                 },
     });
     // Initialize empty line series
@@ -55,7 +68,16 @@ export class StockChart extends React.Component {
     	lineColor: 'rgba(38,198,218, 1)',
     	lineWidth: 2,
     });
-    this.chart.timeScale().applyOptions({ fixLeftEdge: true });
+    this.chart.timeScale().applyOptions({ fixLeftEdge: true,
+                                          crosshair: {
+                                            labelVisible: false,
+                                            visible: false,
+                                          },
+                                          timeScale: {
+                                            timeVisible: true,
+                                            visible: false
+                                          },
+                                        });
 
     window.addEventListener('resize', (event) => {
       this.chart.resize(document.getElementById("AppChart").clientWidth, 350);
