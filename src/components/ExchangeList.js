@@ -8,7 +8,7 @@ import './ExchangeList.css';
 class Exchange extends React.Component {
   constructor(props) {
     super(props);
-    this.state =  { isOpen: false };
+    this.state =  { isOpen: this.props.isOpen };
     this.toggle = this.toggle.bind(this);
   }
 
@@ -59,7 +59,10 @@ export class ExchangeList extends React.Component {
     return (
       <div className="ExchangeList">
         { Object.keys(this.props.exchanges).map((k, i) => {
-            return <Exchange key={i} data={this.props.exchanges[k]} clickAction={this.props.clickAction}/>
+            return <Exchange key={i}
+                             data={this.props.exchanges[k]}
+                             clickAction={this.props.clickAction}
+                             isOpen={(i === 0)? true : false}/>
           })
         }
       </div>
