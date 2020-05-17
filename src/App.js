@@ -168,9 +168,9 @@ class App extends React.Component {
               <Row>
                 <Col md="12">
                   <div className="stockName">
-                    <h1>{this.state.stockShowing} - {this.state.stockShowingName}</h1>
-                    <p>{this.state.stocks[this.state.stockShowingName].country}</p>
-                    <p>{this.state.stocks[this.state.stockShowingName].quote_base}</p>
+                    <h1>{this.state.stockShowing}</h1>
+                    <p>{this.state.stockShowingName}</p>
+                    <p>{this.state.stocks[this.state.stockShowingName].country} - {this.state.stocks[this.state.stockShowingName].quote_base}</p>
                   </div>
                 </Col>
                 <Col md="12">
