@@ -19,6 +19,11 @@ export class StockChart extends React.Component {
     this.chart = createChart(document.getElementById("AppChart"),
                               { width: 600,
                                 height: 350,
+                                fixLeftEdge: true,
+                                localization: {
+                                  locale: 'es-CL',
+                                  dateFormat: 'dd/mm/yyyy',
+                                },
                               	priceScale: {
                               		scaleMargins: {
                               			top: 0.3,
@@ -50,6 +55,7 @@ export class StockChart extends React.Component {
     	lineColor: 'rgba(38,198,218, 1)',
     	lineWidth: 2,
     });
+    this.chart.timeScale().applyOptions({ fixLeftEdge: true });
 
     window.addEventListener('resize', (event) => {
       this.chart.resize(document.getElementById("AppChart").clientWidth, 350);
@@ -71,7 +77,7 @@ export class StockChart extends React.Component {
     		return;
     	}
 
-    	var dateStr = new Date(param.time).toLocaleDateString();
+    	var dateStr = this.datetimeConverter(param.time*1000);
 
     	tooltip.style.display = 'block';
     	var price = param.seriesPrices.get(this.lineSeries);
@@ -109,6 +115,7 @@ export class StockChart extends React.Component {
 
   updateChart(data_price){
     this.lineSeries.setData(data_price);
+    this.chart.timeScale().applyOptions({ rightOffset: 12 });
     //this.chart.timeScale().applyOptions({
     //  rightOffset: data_price[0].time,
     //});
@@ -116,6 +123,24 @@ export class StockChart extends React.Component {
 
   businessDayToString(businessDay) {
     return businessDay.year + '-' + businessDay.month + '-' + businessDay.day;
+  }
+
+  // https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript
+  datetimeConverter(UNIX_timestamp){
+    const a = new Date(UNIX_timestamp);
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const year = a.getFullYear();
+    const month = months[a.getMonth()];
+    const date = a.getDate();
+    const hour = a.getHours();
+    const min = a.getMinutes();
+    const sec = a.getSeconds();
+    const datetime = date + ' ' + month + ' ' + year + ' ' + this.strPad(hour) + ':' + this.strPad(min) + ':' + this.strPad(sec) ;
+    return datetime;
+  }
+
+  strPad(n) {
+    return String("00" + n).slice(-2);
   }
 
   render() {
