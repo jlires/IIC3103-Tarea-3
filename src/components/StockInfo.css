@@ -1,0 +1,67 @@
+.StockData {
+  color: white;
+  height: 100%;
+  display:flex;
+  align-items:center;
+}
+
+
+.StockData table {
+  width: 100%;
+}
+
+.StockData table tr {
+  text-align: left;
+}
+
+.StockData table td {
+  text-align: right;
+}
+
+.StockData table th {
+  width: 100%;
+}
+
+.StockTradesData {
+  color: white;
+  width: 100%;
+}
+
+.StockTradesData table {
+  width: 100%;
+}
+
+.StockTradesData thead, .StockTradesData tbody {
+  width: 100%;
+  display: block;
+}
+
+.StockTradesData thead {
+  width: calc(100% - 1em);
+}
+
+.StockTradesData tbody{
+  height: 150px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.StockTradesData td{
+  /* border: 1px solid white; */
+  width: 100px;
+  text-align: right;
+}
+
+.StockTradesData tr{
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.StockTradesData .buyOrder{
+  background-color: #16b157;
+}
+
+.StockTradesData .sellOrder{
+  background-color: #f05359;
+}

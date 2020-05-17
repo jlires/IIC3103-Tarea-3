@@ -1,5 +1,10 @@
+body {
+  background-color: #131722 !important;
+}
+
 .App {
   text-align: center;
+  margin-top: 50px;
 }
 
 .App-logo {
@@ -35,4 +40,18 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.connection-switch {
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+.row {
+  margin-bottom: 20px;
+}
+
+.stockName {
+  color: white;
+  text-align: left;
 }

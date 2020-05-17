@@ -1,0 +1,29 @@
+.ExchangeData {
+  width: 100%;
+  color: white;
+  text-align: left;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.ExchangeData table {
+  width: 100%;
+  color: white;
+}
+
+.ExchangeData tbody {
+  width: 100%;
+  display: table-row-group;
+}
+
+.ExchangeData table thead {
+  width: 100%;
+}
+
+.ExchangeData table td, .ExchangeData table th {
+  text-align: center;
+}
+
+.ExchangeData p {
+  font-size: xx-small;
+}

@@ -1,0 +1,42 @@
+.Exchange button {
+  width: 100%;
+}
+
+.Exchange ul {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+}
+
+.Exchange ul li {
+  width: 100%;
+  border-width: 0 1px 1px 1px;
+  border-style: solid;
+  background-color: #1b1b2f;
+}
+
+.Exchange ul li:hover {
+  background-color: rgba(38,198,218, 0.56);
+  cursor: pointer;
+}
+
+.Exchange .collapseButton {
+  width: 100%;
+  cursor: pointer;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.Exchange span {
+  display: inline-block;
+  width: 80%;
+}
+.Exchange svg {
+  display: inline-block;
+  width: 20%;
+}
+
+.ExchangeList {
+  width: 200px;
+  color: white;
+}
